@@ -1,0 +1,87 @@
+{% extends "base.twig" %}
+
+{% set page = post %}
+{% set post = recent %}
+
+{% block banner %}
+	{% include "components/banner.twig" with {'format':'home'} %}
+{% endblock %}
+
+{% block feature %}
+	<section id="feature">
+		{% include "components/post-intro.twig" with {'format':'full', 'element':'article'} %}
+	</section>
+{% endblock %}
+
+{% block content %}
+	
+	<section class="thrive-header" data-thrive="true">
+	</section>
+	<section id="featured-categories" class="page-section">
+		{% if featured %}
+			{% for categoryName, category in featured %}
+				{% set title = page.meta(categoryName) %}
+				{% set color =  page.meta(categoryName).color %}
+				<h2 class="category-header border-top-title" style="color:{{ color }}">{{ title }} 
+					<a href="{{ page.meta(categoryName).link }}"><ion-icon name="arrow-dropright-circle"></ion-icon></a> 
+				</h2>
+				<ul class="featured-category-posts" style="--category-color:{{ color }}">
+					{% for post in category %}
+						{% include "components/post-intro.twig" with {'format':'tiny', 'element':'li'} %}
+					{% endfor %}
+				</ul>
+			{% endfor %}
+		{% endif %}
+	</section>
+
+	<section id="lego-books" class="lego-books page-section" data-ui="dark">
+		<div class="feature-lego">
+			<div class="lego-image">
+					
+					{% if lego_books.thumbnail %}
+						<a href="{{lego_books.link}}" aria-label="{{ lego_books.title }}">
+							<img class="hover-shadow" src="{{ lego_books.thumbnail.src|resize(720, 408) }}" alt="{{ lego_books.thumbnail.alt }}">
+						</a>
+					{% endif %}
+			</div>
+
+				<div class="feature-text">
+					<h2>{{ lego_books.title }}</h2>
+					{{ lego_books.meta('_yoast_wpseo_metadesc') }}
+					<p><a href="{{ lego_books.link }}">{{ lego_books.title }} <ion-icon name="arrow-round-forward"></ion-icon></a></p>
+				</div>
+
+
+			</div>
+	</section>
+
+
+	<section class="thrive-footer" data-thrive="true">
+	</section>
+
+	{% if page.meta('seasonal_category') %}
+		{% set category = page.meta('seasonal_category') %}
+		{% set cat_image = Image(category.meta('category_image')) %}
+		<section id="seasonal-category" class="page-section">
+			<div class="feature">
+
+				<div class="feature-image">
+					<div class="fade"></div>
+					{% if cat_image %}
+						<a href="{{ category.link }}">
+							<img src="{{ cat_image|resize(720, 408) }}" alt="seasonal category image">
+						</a>
+					{% endif %}
+				</div>
+				<div class="feature-text">
+					<h2>{{ category.title }}</h2>
+					{{ category.description }}
+					<p><a href="{{ category.link }}">{{ category.title }} Posts <ion-icon name="arrow-round-forward"></ion-icon></a></p>
+				</div>
+
+			</div>
+		</section>
+	{% endif %}
+
+{% endblock %}
+

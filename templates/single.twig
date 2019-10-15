@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+{% block banner %}
+	{% include "components/banner.twig" with {'format':'single'} %}	
+{% endblock %}
+{% block content %}
+
+		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+			
+			
+			
+			
+			
+			<section class="article-content">				
+
+				<div class="article-body">
+					{{post.content}}
+				</div>
+			</section>
+
+			<!-- comment box -->
+			
+
+				{% if post.comment_status != "closed" %}
+					<section class="comment-box small-fullwidth">
+						<h3>{{ post.comments.count }} Comments</h3>
+						<a href="#comment-primary"><ion-icon name="arrow-down"></ion-icon> Post a Comment</a>
+						
+
+						
+					
+						<!-- comments -->
+						{% if post.comments %}
+							<ol class="comments">
+								{% for cmt in post.comments %}
+									{% include "comment.twig" with {comment:cmt} %}
+								{% endfor %}
+							</ol>
+						{% endif %}
+
+						<!-- comment form -->
+						<div id="comment-primary" class="comment-form-primary">
+							<h4>Post a Comment</h4>
+							{% include "comment-form.twig" %}
+						</div>
+					</section>
+				{% endif %}
+
+				
+
+		</article>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+
+// Code
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+code {
+	background: rgba(var(--color-ui-gray), 0.2);
+	font-family:courier;
+	border-radius: .4rem;
+	font-size: 86%;
+	margin: 0 .2rem;
+	padding: .2rem .5rem;
+	white-space: nowrap;
+}
+
+pre {
+	font-family:courier;
+	background: rgba(var(--color-ui-gray), 0.2);
+	border-left: $border-width solid --color-ui-gray;
+	overflow-y: hidden;
+	padding: $space-md;
+
+	& > code {
+		border-radius: 0;
+		display: block;
+		white-space: pre;
+	}
+}
+
+blockquote {
+	border-left: .3rem solid rgba(var(--color-ui-gray), 0.2);
+	margin:$space-md 0;
+	padding: 0 $space-md;
+
+	*:last-child {
+		margin-bottom: 0;
+	}
+}

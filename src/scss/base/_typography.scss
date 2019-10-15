@@ -1,0 +1,147 @@
+
+// Typography
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+b,
+strong {
+	font-weight: bold;
+}
+
+p {
+	margin-top: 0;
+   margin-bottom:1.25rem;
+
+}
+em{
+	font-size:1.1em;
+	font-family:'Faustina', serif;
+	font-style:italic;
+}
+
+
+p:last-child,
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child{
+	margin-bottom:0;
+	padding-bottom:0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	//font-family: 'Passion One', 'Helvetica', 'Arial', sans-serif;
+	color:var(--color-heading);
+	margin:0 0 $space-xs 0;
+}
+
+h1 {
+	font: 400 6rem/.9 'Passion One';
+	a{font-weight:400}
+}
+
+h2 {
+	font: 400 4rem/1.1 'Passion One';
+	a{font-weight:400}
+}
+
+h3 {
+	font: 700 3rem/1.2 'Barlow';
+	a{font-weight:700}
+}
+
+h4 {
+	font: 700 2.6rem/1.35 'Barlow';
+	a{font-weight:700}
+}
+
+h5 {
+	font: 600 2.0rem/1.4 'Barlow';
+}
+
+h6 {
+	font: 600 1.6rem/1.4 'Barlow';
+}
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p,
+ul + p,
+ol + p {
+	margin-top:$space-sm;
+}
+
+ul + h1,
+ul + h2,
+ul + h3,
+ol + h1,
+ol + h2,
+ol + h3,
+p + h1,
+p + h2,
+p + h3,
+a + h1,
+a + h2,
+a + h3,
+ul + h4,
+ul + h5,
+ul + h6,
+ol + h4,
+ol + h5,
+ol + h6,
+p + h4,
+p + h5,
+p + h6{
+	margin-top:$space-lg;
+}
+
+sup{
+	vertical-align:super;
+	font-size:.7em;
+}
+ul{
+  list-style-type:disc;
+  margin-left:2rem;
+  li{
+  	margin-bottom:1rem;
+  }
+}
+
+ol{
+  list-style-type:decimal;
+  margin-left:2rem;
+  li{
+  	margin-bottom:1rem;
+  }
+}
+
+p{
+	line-height:1.5;
+	margin:0 0 .75em 0;
+}
+
+.callout{
+	font-size:1.25em;
+	font-style:italic;
+}
+
+.label{
+	text-transform:uppercase;
+	font-size:.7em;
+	font-weight:900;
+	letter-spacing:.1em;
+	margin:0;
+}
+
+ion-icon{
+	vertical-align:-.2em;
+}

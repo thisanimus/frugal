@@ -1,0 +1,60 @@
+{% if posts.pagination.pages is not empty %}
+    <nav class="pagination-block">
+        <ul class="pagination">
+            {% if pagination.pages|first and pagination.pages|first.current != true %}
+                <li class="first">
+                    <a href="{{ pagination.pages|first.link }}"><ion-icon name="arrow-dropleft-circle"></ion-icon></a>
+                </li>
+            {% else %}
+                <li class="first disabled">
+                    <ion-icon name="arrow-dropleft-circle"></ion-icon>
+                </li>
+            {% endif %}
+
+            {% if pagination.prev %}
+                <li class="prev">
+                    <ion-icon name="arrow-dropleft"></ion-icon>
+                </li>
+            {% else %}
+                <li class="prev btn disabled">
+                    <ion-icon name="arrow-dropleft"></ion-icon>
+                </li>
+            {% endif %}
+
+            {% for page in pagination.pages %}
+                {% if page.link %}
+                    <li>
+                        <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                    </li>
+                {% else %}
+                    <li class="current">
+                        <span class="{{ page.class }}">{{ page.title }}</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if pagination.next %}
+                <li class="next">
+                    <a class="pagination-next" href="{{ pagination.next.link }}">
+                       <ion-icon name="arrow-dropright"></ion-icon>
+                    </a>
+                </li>
+            {% else %}
+                <li class="next disabled">
+                    
+                        <ion-icon name="arrow-dropright"></ion-icon>
+                    
+                </li>
+            {% endif %}
+            {% if pagination.pages|last and pagination.pages|last.current != true %}
+                <li class="last btn">
+                    <a href="{{ pagination.pages|last.link }}"><ion-icon name="arrow-dropright-circle"></ion-icon></a>
+                </li>
+            {% else %}
+                <li class="last disabled">
+                    <ion-icon name="arrow-dropright-circle"></ion-icon>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}

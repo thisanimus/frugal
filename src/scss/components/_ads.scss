@@ -1,0 +1,15 @@
+
+    .thrive-sidebar-sticky{
+        margin-top:$space-md;
+        position:sticky;
+        top:$space-md;
+    }
+
+
+.thrive-bottom-sticky{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    z-index:1;
+}

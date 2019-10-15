@@ -1,0 +1,56 @@
+
+// Color
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+$color-primary: rgb(45, 86, 122);
+$color-secondary:#00796b;
+
+
+
+$color-white: #fff;
+
+html{
+	--color-ui-gray: hsl(208,10%,50%);
+	--color-text: hsl(208,30%,10%);
+	--color-heading: hsl(208,15%,20%);
+	--color-background: hsl(208,5%,100%);
+
+	--color-button-primary-default: hsl(208,39%,25%);
+	--color-button-primary-text: hsl(208,39%,100%);
+
+	--color-button-primary-hover: hsl(208,39%,20%);
+	
+
+	--color-button-outline-primary-default: hsl(208,39%,25%);
+	--color-button-outline-primary-hover: hsl(208,39%,20%);
+
+
+
+	--color-button-secondary-default: hsl(40,55%,55%);
+	--color-button-secondary-text: hsl(208,20%,10%);
+
+	--color-button-secondary-hover: hsl(208,20%,10%);
+
+
+	
+	--color-link-default: #42668c;
+	--color-link-hover: #294058;
+	--color-link-underline: rgba(41, 64, 88, .25);
+
+}
+
+[data-ui="dark"]{
+	--color-ui-gray: hsl(208,10%,90%);
+	--color-text: hsl(208,20%,90%);
+	--color-heading: hsl(208,15%,90%);
+	--color-background: hsl(208,5%,10%);
+
+	--color-link-default: #7ea5d0;
+	--color-link-hover: #aeccec;
+	--color-link-underline: rgba(174, 204, 236, .25);
+
+	--color-button-primary-hover: hsl(208,39%,30%);
+	--color-button-secondary-hover: hsl(40,55%,65%);
+}
+

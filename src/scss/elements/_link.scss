@@ -1,0 +1,19 @@
+
+// Link
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+a {
+	text-decoration:none;
+	color: var(--color-link-default);
+	font-weight:600;
+
+	&:focus,
+	&:hover {
+		color: var(--color-link-hover);
+		text-decoration:underline;
+		text-decoration-color:var(--color-link-underline);
+
+	}
+}
+
+

@@ -1,0 +1,35 @@
+.banner{
+    color:#fff;
+    overflow:hidden;
+    background-color: darken($color-primary, 8%);
+    position:relative;
+    z-index:0;
+    text-align:center;
+}
+.underlay{
+    z-index:-1;
+    position: absolute;
+    top:-10%;
+    left:-10%;
+    height:120%;
+    width:120%;
+}
+.underlay-img{
+    display: block;
+    opacity:.4;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    
+}
+
+.banner-title{
+    margin:$space-lg;
+}
+
+.banner-logo{
+    max-width:30em;
+    margin:$space-md auto;
+    padding:$space-lg;
+    filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, .5));
+}

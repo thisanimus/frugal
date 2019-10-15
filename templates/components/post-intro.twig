@@ -1,0 +1,113 @@
+{% if element == 'li' %}
+	<li class="post-intro post-intro-{{ format }}">
+{% elseif element == 'article' %}
+	<article class="post-intro post-intro-{{ format }}">
+{% elseif element == 'header' %}
+	<header class="post-intro post-intro-{{ format }}">
+{% else %}
+	<div id="post-{{post.ID}}" class="post-intro post-intro-{{ format }}">
+{% endif %}
+
+    {% if post.thumbnail and format != 'single' %}
+		<a class="post-intro-image" href="{{post.link}}" aria-label="{{ post.title }}">
+			<img {% if format == 'tiny' %} class="hover-shadow" {% endif %}
+				srcset="{{ post.thumbnail.src|resize(200, 200) }} 200w, {{ post.thumbnail.src|resize(400, 400) }} 400w,{{ post.thumbnail.src|resize(600, 600) }} 600w" 
+				src="{{ post.thumbnail.src|resize(200, 200) }}" 
+				alt="{{ thumb.alt }}">
+		</a>
+	{% endif %}
+    <div class="post-intro-text">
+        {% if format == 'tiny' %}
+            <h3><a href="{{post.link}}">{{post.title}}</a></h3>
+            <h6 class="post-date">{{ post.date }}</h6>
+        {% endif %}
+
+		{% if format == 'partial' %}
+            <h3 class="post-title"><a href="{{ post.link }}">{{post.post_title}}</a></h3>
+			<h6 class="post-date">{{ post.date }}</h6>
+			<p>{{ post.post_content|striptags|excerpt(30) }}</p>
+			<p><a href="{{ post.link }}">Read More <ion-icon name="arrow-round-forward"></ion-icon></a></p>
+
+			{% if post.categories or post.tags %}
+				{% include "components/meta-links.twig" %}
+			{% endif %}
+
+        {% endif %}
+
+         {% if format == 'full' %}
+            <h1 class="post-title"><a href="{{ post.link }}">{{post.post_title}}</a></h1>
+			<h6 class="post-date">{{ post.date }}</h6>
+			<p>{{ post.post_content|striptags|excerpt(60) }}</p>
+			<p><a href="{{ post.link }}">Read More <ion-icon name="arrow-round-forward"></ion-icon></a></p>
+
+			{% if post.categories or post.tags %}
+				{% include "components/meta-links.twig" %}
+			{% endif %}
+
+        {% endif %}
+
+		{% if format == 'single' %}
+			<div class="container">
+				<div class="post-header-content">
+				<h1 class="post-title">{{post.post_title}}</h1>
+				<ul class="post-meta">
+					<li>
+						<h6 class="label">published</h6>
+						<h6 class="post-date">{{ post.date }}</h6>
+					</li>
+					{% if post.comment_status != "closed" %}
+						<li>
+							<h6 class="label">{{ (post.comments.count) ? post.comments.count ~ ' comments' : 'comments' }}</h6>
+							<h6><a href="#comment-primary">{{ (post.comments.count) ? 'Join the Conversation' : 'Start the Conversation' }}</a></h6>
+						</li>
+					{% endif %}
+					
+					{% if post.categories|length + post.tags|length > 0 %}
+					<li>
+						<h6 class="label">categories/tags:</h6>
+						<h6>
+							{% for category in post.categories %}
+								{% if loop.index < 4 %}
+									<a href="{{ category.link }}">{{ category.name }}</a>
+								{% endif %}
+							{% endfor %}
+							{% for tag in post.tags %}
+								{% if loop.index < 4 %}
+									<a href="{{ tag.link }}">{{ tag.name }}</a>
+								{% endif %}
+							{% endfor %}
+						</h6>
+					</li>
+					{% endif %}
+				</ul>
+				
+
+				
+				{% include 'components/share-links.twig' %}
+				</div>
+
+					{% include 'components/subscribe-form.twig' with {'location': 'banner'} %}
+
+			</div>
+			
+
+			
+
+        {% endif %}
+
+		{% if user %}
+			<a href="{{ site.link }}/wp-admin/post.php?post={{ post.id }}&action=edit">{{ _e('edit') }}</a>
+		{% endif %}
+
+
+	</div> 
+
+{% if element == 'li' %}
+	</li>
+{% elseif element == 'article' %}
+	</article>
+{% elseif element == 'header' %}
+	</header>
+{% else %}
+	</div>
+{% endif %}

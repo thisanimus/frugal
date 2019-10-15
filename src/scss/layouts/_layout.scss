@@ -1,0 +1,124 @@
+body{
+    width:100%;
+    max-width:100%;
+    min-height:100vh;
+    display:grid;
+    grid-gap:$space-md;
+    @include lg-and-up{
+        grid-gap:$space-lg;
+    }
+    grid-template-areas:
+        'header header header'
+        'pad1 feature pad2'
+        'pad1 main pad2'
+        'pad1 sidebar pad2'
+        'footer footer footer';
+        grid-template-columns: 0px 1fr 0px;
+        
+    @include lg-and-up{
+        grid-gap:$space-xl;
+        grid-template-areas:
+        'header header header header'
+        'pad1 feature feature pad2'
+        'pad1 main sidebar pad2'
+        'footer footer footer footer';
+        grid-template-columns: 4vw 1fr 300px 4vw;
+
+    }
+    
+
+    >header{
+        grid-area:header;
+    }
+    >main{
+        grid-area:main;
+        //margin:0 $space-lg;
+        @include lg-and-up{
+           // margin:0 0 0 8vw;
+        }
+
+    }
+    >aside{
+        grid-area:sidebar;
+        @include lg-and-up{
+            //margin:0 8vw 0 0;
+        }
+    }
+    >footer{
+        width:100%;
+        background:darken($color-primary,20%);
+        grid-area:footer;
+        a{
+            color:$color-white;
+            opacity:.8;
+            &:hover, &:focus{
+                color:$color-white;
+                opacity:1;
+                text-decoration:none;
+
+            }
+        }
+    }
+
+
+}
+.main-content{
+
+}
+
+.sidebar{
+	
+}
+
+#feature{
+    grid-area:feature;
+    @include lg-and-up{
+        //margin:$space-xl 8vw;
+    }
+}
+
+.page-section{
+    &:not(:last-child){
+        margin-bottom:$space-xl;
+    }
+    
+}
+
+footer{
+
+    .copyright{
+        padding:$space-xl $space-lg;
+        
+        background:rgba(0,0,0,0.4);
+        text-align:center;
+        h5{
+            font-size:.85em;
+            font-weight:400;
+        }
+        h6{
+            font-size:.7em;
+            text-transform:uppercase;
+            letter-spacing:.2em;
+            font-weight:400;
+        }
+    }
+}
+
+.empty-wrapper{
+    grid-column: 1 / -1;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+	align-items:center;
+    justify-content:center;
+    .big-icon{
+        margin:0;
+        font-size:6em;
+    }
+}
+
+.article-content{
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}

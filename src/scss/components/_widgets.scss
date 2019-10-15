@@ -1,0 +1,123 @@
+.widgets{
+    @extend %flat-list;
+    
+}
+.sidebar{
+    li.widget{
+        background:#f2f2f2;
+        border-radius:$border-radius;
+        padding:$space-md;
+        &:not(:first-child){
+            margin-top:$space-md;
+        }
+    }
+}
+
+.about{
+    
+    @include tiny{
+        display:block;
+    }
+    @include lg-and-up{
+        display:block;
+    }
+    display:flex;
+    
+    font-size:1.8rem;
+    img{
+        border-radius:$border-radius;
+    }
+    .card-image{
+        margin:0 $space-md 0 0;
+        max-width:300px;
+        min-width:25%;
+        @include lg-and-up{
+            margin: 0 0 $space-sm 0;
+        }
+    }
+
+    .card-text{
+
+    }
+}
+footer{
+
+    .widgets{
+        max-width:100%;
+       
+       margin:$space-md;
+       @include sm-and-up{
+        margin:$space-lg;
+        display:flex;
+       }
+       @include lg-and-up{
+           margin: $space-xl 8vw;
+       }
+    }
+}
+
+ul.platform-links{
+    @extend %flat-list;
+    margin-top:$space-md;
+    li{
+        margin-top:$space-sm;
+    }
+
+    ion-icon{
+        vertical-align:middle;
+        font-size:2em;
+        margin-right:$space-sm;
+    }
+    
+
+} 
+
+li.widget_categories{
+    padding:$space-lg 0 0 0;
+    @include sm-and-up{
+        flex-grow:1;
+        padding:0 0 0 $space-xl;
+       }
+
+    
+    
+    .widgettitle, .cat-item-1{
+        display:none
+    }
+    >ul{
+        @extend %flat-list;
+        display:grid;
+        grid-gap:$space-md;
+        grid-template-columns: repeat(auto-fit,minmax(10ch,1fr));
+        >li{
+            overflow:hidden;
+            &:before{
+                color:#fff;
+                height:1em;
+                display:block;
+                padding:0;
+                width: 0;
+                white-space: nowrap;
+                font-size:1.5em;
+                line-height:.5;
+                letter-spacing: .1em;
+                opacity:.5;
+                content: "........................................................................................................................................";
+            }
+     
+            >a{
+                font-size:2.0rem;
+            }
+        }
+        ul{
+            @extend %flat-list;
+            >li{
+                line-height:1.2;
+                margin-top:$space-sm;
+                a{
+                    font-weight:400;
+                }
+            }
+        }
+    }
+}

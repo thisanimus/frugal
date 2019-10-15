@@ -1,0 +1,14 @@
+{% if post.categories|length + post.tags|length > 0 %}
+	<ul class="meta-links">
+		{% for category in post.categories %}
+			{% if loop.index < 4 %}
+				<li class="meta-link"><a href="{{ category.link }}">{{ category.name }}</a></li>
+			{% endif %}
+		{% endfor %}
+		{% for tag in post.tags %}
+			{% if loop.index < 4 %}
+				<li class="meta-link"><a href="{{ tag.link }}">{{ tag.name }}</a></li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endif %}

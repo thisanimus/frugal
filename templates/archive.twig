@@ -1,0 +1,20 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "index.twig" %}
+{% block banner %}
+
+
+    
+
+
+  <div class="banner-title">
+    <h1><ion-icon name="pricetag"></ion-icon> {{ title }}</h1>
+  </div>
+    
+    
+
+{% endblock %}
+{% block content %}
+  {{ parent() }}
+{% endblock %}

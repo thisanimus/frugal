@@ -1,0 +1,17 @@
+<li class="book">
+    <div class="book-image">
+        <img src="{{ Image(book.image).src|resize(240,270) }}" alt="{{ Image(book.image).name }}" />
+    </div>
+    <div class="book-content">
+        <h3>{{ book.title }}</h3>
+        <h5>{{ book.subtitle }}</h5>
+        {{ book.links }}
+        <details>
+            <summary>
+                Full Description
+            </summary>
+            {{ book.description }}
+        </details>
+    </div>
+</li>
+

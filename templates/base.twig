@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" {{ site.language_attributes }} data-menu-state="inactive">
+{% block html_head_container %}
+<head>
+	{% include 'html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+</head>
+{% endblock %}
+
+
+
+	<body class="{{body_class}}" data-template="base.twig" data-instant-intensity="mousedown">
+		<header class="header" >
+			{% block header %}
+				{% include "menu.twig" with {'items': menu.get_items} %}
+			{% endblock %}
+			<section class="banner" data-ui="dark">
+					<div class="underlay" data-speed="1" data-scroll-animate>
+						<img class="underlay-img" src="{{ site.theme.link }}/assets/img/objects.png" alt="background-image">
+					</div>
+				{% block banner %}
+
+				{% endblock %}
+			</section>
+		</header>
+			
+		{% block feature %}
+		{% endblock %}
+
+		<main id="content" role="main" class="main-content">
+			
+				{% block content %}
+					
+				{% endblock %}
+			
+		</main>
+		
+		{% if sidebar %}
+			{% include 'sidebar.twig' %}
+		{% endif %}
+
+		{% block footer %}
+			<footer id="footer" data-ui="dark">
+				<div class="thrive-footer-sticky" data-thrive="true"></div>
+				{% include 'footer.twig' %}
+			</footer>
+			{{ function('wp_footer') }}
+			<script defer src="{{ site.theme.link }}/assets/js/script-min.js"></script>
+			<script>
+				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+				ga('create', 'UA-17815170-2', 'auto');
+				ga('send', 'pageview');
+			</script>
+			<script async src='https://www.google-analytics.com/analytics.js'></script>
+		{% endblock %}
+	</body>
+</html>

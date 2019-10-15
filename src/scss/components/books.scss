@@ -1,0 +1,47 @@
+ul.books{
+    @extend %flat-list;
+    li.book{
+        margin:$space-lg 0 0 0;
+        padding:$space-xl 0 0 0;
+        
+    
+        @include md-and-up{
+            display:flex;
+        }
+        overflow:hidden;
+        &:before{
+            opacity:.75;
+            font-size:1.5em;
+            height:1.75em;
+            margin-top:-2.8em;
+            display:block;
+            padding:0;
+            width: 0;
+            white-space: nowrap;
+            line-height:1.6;
+            letter-spacing: .1em;
+            content: "................................................................................................................................................................................................................................................................................";
+
+        }
+    }
+
+}
+
+
+
+.book-image{
+    @include md-and-up{
+        width:12em;
+        margin-right:$space-lg;
+    }
+
+    img{
+        
+        border-radius:$border-radius;
+    border:$border-width solid rgba(125,125,125,0.2);
+    }
+}
+
+.book-content{
+    flex: 1;
+}

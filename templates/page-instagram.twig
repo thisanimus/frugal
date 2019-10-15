@@ -1,0 +1,40 @@
+{% extends "base.twig" %}
+
+{% set page = post %}
+
+{% block banner %}
+  <div class="banner-title">
+  <h1>{{ page.title }}</h1>
+  {{ page.content }}
+  </div>
+{% endblock %}
+
+{% block content %}
+	
+	<section id="featured-categories" class="page-section">
+		{% if instagram_posts %}
+      <ol class="instagram-posts">
+			{% for post in instagram_posts %}
+        {% if post.featured_on_instagram is not empty %}
+          <li id="{{ post.id }}">
+            <a href="{{post.link}}" aria-label="{{ post.title }}">
+              <figure>
+                <img src="{{ Image(post.facebook_image).src|resize(400, 400) }}" alt="{{ post.title }}" />
+                <figcaption>
+                <h5>{{ post.title }}</h5>
+                <h6><ion-icon name="logo-instagram"></ion-icon> {{ post.featured_on_instagram|date('M j, Y') }}</h6>
+                </figcaption>
+              </figure>
+            </a>
+          
+          
+          </li>
+        {% endif %}
+			{% endfor %}
+      </ol>
+		{% endif %}
+	</section>
+	<section class="thrive-footer">
+	</section>
+{% endblock %}
+

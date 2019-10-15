@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% if posts|length %}
+	<ol class="post-list">
+		{% for post in posts %}
+			{% include "components/post-intro.twig" with {'format':'partial', 'element':'li'} %}
+		{% endfor %}
+	</ol>
+	{% endif %}
+	
+	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 2, end_size: 1}) } %}
+{% endblock %}

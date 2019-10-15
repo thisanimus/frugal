@@ -1,0 +1,8 @@
+
+    {% if format == 'home' %}
+        <img class="banner-logo" src="{{ site.theme.link }}/assets/img/ff4bg_logo.svg" alt="Frugal Fun for Boys and Girls Logo">
+        {% include "components/subscribe-form.twig" with {'location': 'header'} %}
+    {% elseif format == 'single' %}
+        {% include "components/post-intro.twig" with {'format':'single', 'element':'header'} %}
+    {% endif %}
+    

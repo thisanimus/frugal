@@ -1,0 +1,33 @@
+%rounded {
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+%flat-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+%small-fullwidth{
+    margin:0 -#{$space-md};
+    @include sm-and-up{
+        border-radius:inherit;
+        margin:0 -#{$space-lg};
+    }
+    @include lg-and-up{
+        margin:0;
+    }
+}
+
+@mixin dark-ui {
+    html[data-mode=dark] & {
+
+        @content;
+    }
+}

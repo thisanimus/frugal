@@ -1,0 +1,14 @@
+<li class="featured-category-post">
+	
+	{% if post.thumbnail %}
+		<a class="featured-post-image" href="{{post.link}}" aria-label="{{ post-title }}">
+			<img class="hover-shadow" src="{{ post.thumbnail.src|resize(300, 300) }}" alt="{{ thumb.alt }}">
+		</a>
+	{% endif %}
+
+	<div class="featured-post-intro">
+		<h3 class="h2"><a href="{{post.link}}">{{post.title}}</a></h3>
+		<h6 class="post-date">{{ post.date }}</h6>
+	</div> 
+</li>
+

@@ -1,0 +1,34 @@
+<section class="main-menu-wrapper">
+	<nav id="nav-main" class="main-menu" role="navigation">
+		{% if menu %}
+			<a href="{{ site.link }}" title="Home">
+				<img class="logo" src="{{ site.theme.link }}/assets/img/ff4bg_logo.svg" alt="site-logo">
+			</a>
+			<button name="menu-button" id="menuToggle" class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+				menu
+			</button>
+
+			<ul class="menu-level-1">
+			{% for item in items %}
+				<li class="page-link">
+					<a target="{{ item.target }}" href="{{ item.link }}">
+					{% if item.menu_icon %}
+						<img class="menu-item-icon" src="{{ Image(item.menu_icon).src }}" alt="{{ Image(item.menu_icon).alt }}" />
+					{% endif %}
+					<div class="menu-item-text">
+						{{ item.title }}
+					</div>
+					</a>
+				</li>
+			{% endfor %}
+			{{ navbar }}
+			</ul>
+
+		{% endif %}
+
+		
+	</nav><!-- #nav -->
+</section>

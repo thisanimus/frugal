@@ -1,0 +1,31 @@
+<li class="comment{{ (cmt.is_child) ? ' child-comment' : '' }}" id="comment-{{comment.ID}}">
+	<h5 class="comment-author">{{comment.author.name}}
+	{% if 'now'|date('m/d/Y') == comment.date('m/d/Y') %}
+		<span class="comment-meta">Today at {{comment.time}}</span></h5>
+	{% else %}
+		<span class="comment-meta">{{ comment.date('M j, Y') }}</span></h5>
+	{% endif %}
+	
+	<div class="comment-content">{{comment.comment_content|wpautop}}</div>
+
+
+		
+		<!-- comment form -->
+		<details class="comment-form-collapse">
+			<summary><ion-icon name="chatbubbles"></ion-icon> Reply</summary>
+			{% include "comment-form.twig" %}
+		</details>
+		
+
+		<!-- child comments -->
+		{% if post.comments %}
+
+			<ol class="comments child-comments">
+				{% for cmt in comment.children %}
+					{% include "comment.twig" with {comment:cmt} %}
+				{% endfor %}
+			</ol>
+		{% endif %}
+
+
+</li>

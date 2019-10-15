@@ -1,0 +1,12 @@
+{% if footer|length %}
+
+    {% include 'components/subscribe-form.twig' with {'location': 'footer'} %}
+
+    <ol class="widgets">
+        {{ footer }}
+    </ol>
+    <div class="copyright">
+        <h5>Copyright 2010 - {{"now"|date('Y')}} • <a href="/policies/">Policies</a></h5>
+        <h6>An Elite Cafemedia Family &amp; Parenting Publisher</h6>
+    </div>
+{% endif %}

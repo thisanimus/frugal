@@ -1,0 +1,59 @@
+.subscribe{
+    background:darken($color-secondary, 2%); 
+    color:#fff;
+    padding:$space-lg;
+    margin:0;
+    text-align:left;
+    @include md-and-up{
+        text-align:center;
+   
+    }
+    .form-input{
+        @include md-and-up{
+            margin-top:$space-md;
+            justify-content:center;
+            display:flex;
+        .formkit-alert-error{
+            display:none;
+        }
+        input{
+            background:darken($color-secondary, 5%); 
+            margin:0 $space-md 0 0;
+            max-width:15em;
+        }
+    
+        }
+        
+
+        
+    }
+}
+.banner-subscribe{
+    border-radius:$border-radius;
+    
+    text-align:left;
+    padding:$space-md;
+    box-shadow: .5em .5em 2em rgba(0,0,0,.4);
+    
+    @include md-and-up{
+        margin:0 0 0 auto;
+        max-width:20em;
+    }
+    .form-input{
+        @include md-and-up{
+            margin-top:$space-md;
+            display:block;
+        .formkit-alert-error{
+            display:none;
+        }
+        input{
+            margin:0 0 $space-sm 0;
+            max-width:100%;
+        }
+    
+        }
+        
+
+        
+    }
+}

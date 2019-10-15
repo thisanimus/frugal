@@ -1,0 +1,54 @@
+.feature{
+	background:rgba(125,125,125,0.1);
+	border-radius:$border-radius;
+	overflow:hidden;
+	@include md-and-up{
+		display:flex;
+	}
+}
+
+.feature-image{
+	@include md-and-up{
+		width:40%;
+	flex-shrink:0;
+	position:relative;
+	overflow:hidden;
+	img{
+		min-height:100%;
+
+		position:absolute;
+		object-fit:cover;
+	}
+	}
+	
+}
+
+.feature-text{
+	padding:$space-lg;
+}
+.lego-books{
+	.feature-lego{
+		border-radius:$border-radius;
+		color:#fff;
+		background:darken($color-primary,10%);
+		@include xl-and-up{
+			display:flex;
+		}
+	}
+	.lego-image{
+		width:100%;
+		@include xl-and-up{
+			width:60%;
+		flex-shrink:0;
+		position:relative;
+		overflow:hidden;
+		img{
+			min-height:100%;
+	
+			position:absolute;
+			object-fit:contain;
+		}
+		}
+		
+	}
+}

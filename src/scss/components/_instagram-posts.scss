@@ -1,0 +1,14 @@
+ol.instagram-posts{
+  @extend %flat-list;
+  display: grid;
+  grid-gap:$space-lg;
+  grid-template-columns: repeat(auto-fill,minmax(12em,1fr));
+  img{
+    border-radius:$border-radius;
+  }
+  figcaption{
+    h5{
+      margin:$space-xs 0 0 0
+    }
+  }
+}

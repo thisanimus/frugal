@@ -1,0 +1,27 @@
+details{
+    overflow:hidden;
+    //max-height:2.0em;
+    //transition: max-height .25s ease-out;
+    summary{
+
+        font-weight:600;
+        outline:none;
+        cursor:pointer;
+        color:var(--color-link-default);
+        &:hover, &:focus{
+            color:var(--color-link-hover);
+        }
+    }
+  }
+  details[open] {
+    //max-height:30em;
+    summary{
+        outline:none;
+    }
+  }
+
+  details > summary:first-of-type {
+    list-style-type: none;
+}
+details > summary {display:block}
+::-webkit-details-marker { display:none; }

@@ -1,0 +1,19 @@
+{
+    "name": "Frugal Fun for Boys and Girls",
+    "short_name": "Frugal Fun for Boys and Girls",
+    "icons": [
+      {
+        "src": "/web/app/themes/frugal/assets/favicon/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/web/app/themes/frugal/assets/favicon/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#2d567a",
+    "background_color": "#2d567a",
+    "display": "standalone"
+  }

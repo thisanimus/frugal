@@ -1,0 +1,22 @@
+
+// Divider
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+hr{
+	border:none;
+	margin:$space-md 0;
+	overflow:hidden;
+	&:before{
+		height:1em;
+		display:block;
+		padding:0;
+		width: 0;
+		white-space: nowrap;
+		font-size:1.5em;
+		line-height:.5;
+		letter-spacing: .1em;
+		opacity:.5;
+		content: "........................................................................................................................................";
+
+	}
+}

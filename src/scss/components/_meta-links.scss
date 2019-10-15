@@ -1,0 +1,19 @@
+.meta-links{
+    display:block;
+    @extend %flat-list;
+
+}
+.meta-link{
+    display:inline-block;
+    font-size:1.4rem;
+    &:not(:last-child){
+        margin-right:$space-xs;
+    }
+    a{
+        background:rgba(125,125,125,.1);
+        display:block;
+        padding:$space-xs $space-sm;
+        border-radius:$border-radius;
+    }
+    
+}

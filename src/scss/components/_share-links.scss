@@ -1,0 +1,35 @@
+.share-links{
+    @extend %flat-list;
+    display:flex;
+    width:100%;
+    text-align:center;
+    margin:$space-md 0;
+    
+    li{
+        flex-grow:1;
+        &:not(:last-child){
+            margin-right:$space-sm;
+        }
+    }
+   a.button{
+       width:100%;
+       padding:0;
+       border-color:#fff;
+   }
+   .facebook{
+        background:#3C5A99;
+
+        &:hover, &:focus{
+            background:darken(#3C5A99, 10%);
+
+        }
+   }
+   .pinterest{
+       background:#e60023;
+
+       &:hover, &:focus{
+        background:darken(#e60023, 10%);
+
+    }
+   }
+}

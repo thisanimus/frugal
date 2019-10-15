@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block banner %}
+  <div class="banner-title">
+    <h1>{{ post.title }}</h1>
+  </div>
+    
+{% endblock %}
+
+{% if allpostspage|length %}
+	{% block feature %}
+		<section id="feature">
+			<ol class="widgets">
+					{{ allpostspage }}
+			</ol>
+		</section>
+	{% endblock %}
+{% endif %}
+
+
+
+{% block content %}
+	{% if posts|length %}
+	<ol class="post-list">
+		{% for post in posts %}
+			{% include "components/post-intro.twig" with {'format':'partial', 'element':'li'} %}
+		{% endfor %}
+	</ol>
+	{% endif %}
+	
+	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+{% endblock %}
