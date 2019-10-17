@@ -31,7 +31,7 @@ $instagram_args = array(
     'posts_per_page' => -1,
     'meta_key' => 'featured_on_instagram',
     'order'=>'DESC',
-    'orderby'=>'publish_date',
+    'orderby'=>'featured_on_instagram',
 );
 $context['instagram_posts'] = Timber::get_posts($instagram_args);
 
