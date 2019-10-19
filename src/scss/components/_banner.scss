@@ -13,15 +13,15 @@
     left:-10%;
     height:120%;
     width:120%;
+    img{
+        opacity:.4;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        
+    }
 }
-.underlay-img{
-    display: block;
-    opacity:.4;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    
-}
+
 
 .banner-title{
     margin:$space-lg;
