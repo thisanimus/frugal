@@ -1,7 +1,7 @@
 <ul class="share-links">
     <li><a class="button share-link facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ post.link }}"><ion-icon name="logo-facebook"></ion-icon> Share</a></li>
     <li><a class="button share-link pinterest" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ post.link }}&media={{ Image(post.meta('pinterest-image')).src }}&description={{ post.meta('_yoast_wpseo_metadesc') }}" data-pin-custom="true"><ion-icon name="logo-pinterest"></ion-icon> Save</a></li>
-    <li><a class="button share-link email" href="mailto:?subject={{ post.title }}&body={{ post.meta('_yoast_wpseo_metadesc') }}"><ion-icon name="mail"></ion-icon> Email</a></li>
+    <li><a class="button share-link email" href="mailto:?subject={{ post.title }}&body={{ post.meta('_yoast_wpseo_metadesc') }}%0D%0A{{ post.link }}"><ion-icon name="mail"></ion-icon> Email</a></li>
 </ul>
 
 
