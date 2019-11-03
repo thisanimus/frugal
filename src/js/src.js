@@ -11,3 +11,16 @@ if (elem){
     scrollThreshold: 800,
   });
 }
+
+
+
+if (document.querySelectorAll('img')) { 
+    
+    var images = document.querySelectorAll('img');
+    
+    for (let image of images) {   
+        image.removeAttribute("width");
+        image.removeAttribute("height");
+    }
+
+}

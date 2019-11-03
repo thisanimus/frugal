@@ -123,4 +123,8 @@ footer{
     word-break: break-word;
     hyphens: auto;
     margin-bottom:$space-page;
+    img{
+        max-width:100%;
+        height:auto;
+    }
 }

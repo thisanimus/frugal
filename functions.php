@@ -65,6 +65,9 @@ class Frugal extends Timber\Site {
 		add_filter( 'get_search_form', array( $this, 'frugal_search_form') );
         add_filter('upload_mimes', array( $this, 'cc_mime_types') );
         add_filter( 'wpseo_sitemap_entries_per_page', array( $this, 'max_entries_per_sitemap' ) );
+        add_filter( 'post_thumbnail_html', array( $this, 'remove_width_attribute'));
+        add_filter( 'image_send_to_editor', array( $this, 'remove_width_attribute') );
+        add_filter( 'post_thumbnail_html', array( $this, 'remove_thumbnail_dimensions') );
 		//add_action( 'wp_enqueue_scripts', array( $this, 'scripts') ); 
 		parent::__construct();
 	}
@@ -128,7 +131,17 @@ class Frugal extends Timber\Site {
 		</form>';
 
 		return $form;
-	}
+    }
+
+    public function remove_width_attribute( $html ) {
+        $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+        return $html;
+    }
+
+    public function remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
+        $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+        return $html;
+    }
 
 
    
