@@ -8,8 +8,6 @@
 </head>
 {% endblock %}
 
-
-
 	<body class="{{body_class}}" data-template="base.twig" data-instant-intensity="mousedown">
 		<header class="header" >
 			{% block header %}
@@ -46,7 +44,8 @@
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}
-			<script defer src="{{ site.theme.link }}/assets/js/script-min.js"></script>
+			<script type="module" async defer src="{{ site.theme.link }}/assets/js/script-esm.js"></script>
+			<script nomodule async defer src="{{ site.theme.link }}/assets/js/script.js"></script>
 			<script>
 				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 				ga('create', 'UA-17815170-2', 'auto');

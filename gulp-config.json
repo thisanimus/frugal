@@ -1,0 +1,24 @@
+{
+	"script": {
+		"main": "src/js/script.js",
+		"es5": "assets/js/script.js",
+		"es6": "assets/js/script-esm.js",
+		"modules": "src/js/modules/**/*.js",
+		"deps": "src/js/dependencies/**/*.js",
+		"templates": "templates/**/*.js",
+		"output": "assets/js/"
+	},
+	"style": {
+		"main": "src/scss/style.scss",
+		"templates": "templates/**/*.{scss,sass}",
+		"src": "src/**/*.{scss,sass}",
+		"output": "assets/css/"
+	},
+	"markup": {
+		"templates": "templates/**/*.{twig,html}"
+	},
+	"server": {
+		"proxy": "https://frugal.local",
+		"host": "frugal.local"
+	}
+}

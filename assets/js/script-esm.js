@@ -542,19 +542,14 @@ if (window.requestAnimationFrame) {
 		addEventListener("scroll", animate, !1, { passive: true });
 	}
 }
-(function () {
-	'use strict';
+const elem = document.querySelector(".post-list");
 
-	var elem = document.querySelector(".post-list");
-
-	if (elem) {
-	  new InfiniteScroll(elem, {
-	    // options
-	    path: ".pagination-next",
-	    append: ".post-intro",
-	    history: false,
-	    scrollThreshold: 800
-	  });
-	}
-
-}());
+if (elem) {
+	new InfiniteScroll(elem, {
+		// options
+		path: ".pagination-next",
+		append: ".post-intro",
+		history: false,
+		scrollThreshold: 800,
+	});
+}
