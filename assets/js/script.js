@@ -557,4 +557,4 @@ if (window.requestAnimationFrame) {
 	  });
 	}
 
-}());
+})();

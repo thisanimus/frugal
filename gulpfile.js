@@ -1,33 +1,30 @@
 // Requires Gulp v4.
-const { src, dest, watch, series, parallel } = require("gulp");
+const { src, dest, watch, series, parallel } = require('gulp');
 
 // CSS Tools
-const sass = require("gulp-sass");
-const cssnano = require("gulp-cssnano");
-const autoprefixer = require("gulp-autoprefixer");
+const sass = require('gulp-sass')(require('sass'));
+const cleancss = require('gulp-clean-css');
+const autoprefixer = require('gulp-autoprefixer');
 
 // JS Tools
-const rollup = require("rollup");
-const { nodeResolve } = require("@rollup/plugin-node-resolve");
-const { babel } = require("@rollup/plugin-babel");
+const rollup = require('rollup');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { babel } = require('@rollup/plugin-babel');
 
 // Build Tools
-const browsersync = require("browser-sync").create();
-const concat = require("gulp-concat");
-const terser = require("gulp-terser");
-const rename = require("gulp-rename");
-
-// SFTP
-var sftp = require("gulp-sftp-up4");
+const browsersync = require('browser-sync').create();
+const concat = require('gulp-concat');
+const terser = require('gulp-terser');
+const rename = require('gulp-rename');
 
 // Config
-const config = require("./gulp-config");
+const config = require('./gulp-config');
 
 // Minify SASS
 function sassMinify() {
-	return src(config.style.output + "/style.css")
-		.pipe(cssnano()) // minify it
-		.pipe(rename({ suffix: "-min" })) // rename it
+	return src(config.style.output + 'style.css')
+		.pipe(cleancss()) // minify it
+		.pipe(rename({ suffix: '-min' })) // rename it
 		.pipe(dest(config.style.output))
 		.pipe(browsersync.stream()); // change the browser styles with no page reload
 }
@@ -35,19 +32,19 @@ function sassMinify() {
 function sassCompile() {
 	return src(config.style.main)
 		.pipe(sass())
-		.on("error", function (err) {
+		.on('error', function (err) {
 			console.log(err.formatted.toString());
-			this.emit("end");
+			this.emit('end');
 		})
 		.pipe(
 			// Add browser prefixes
 			autoprefixer({
-				overrideBrowserslist: ["> 1%", "last 2 versions", "ie >= 11"],
+				overrideBrowserslist: ['> 1%', 'last 2 versions'],
 			})
 		)
 		.pipe(dest(config.style.output))
 		.pipe(browsersync.stream())
-		.on("end", () => {
+		.on('end', () => {
 			sassMinify();
 		});
 }
@@ -61,7 +58,7 @@ function jsRollup() {
 			plugins: [nodeResolve()],
 		})
 		.then((bundle) => {
-			writeFile(bundle, "es", config.script.es6);
+			writeFile(bundle, 'es', config.script.es6);
 		});
 }
 
@@ -74,15 +71,15 @@ function jsTranspile() {
 			plugins: [
 				nodeResolve(),
 				babel({
-					presets: [["@babel/env", { modules: false }]],
+					presets: [['@babel/env', { modules: false }]],
 					sourceMaps: true,
-					babelHelpers: "bundled",
-					exclude: "node_modules/**",
+					babelHelpers: 'bundled',
+					exclude: 'node_modules/**',
 				}),
 			],
 		})
 		.then((bundle) => {
-			writeFile(bundle, "iife", config.script.es5);
+			writeFile(bundle, 'iife', config.script.es5);
 		});
 }
 
@@ -90,7 +87,7 @@ function writeFile(bundle, format, file) {
 	return bundle.write({
 		file: file,
 		format,
-		name: "script",
+		name: 'script',
 	});
 }
 
@@ -98,22 +95,18 @@ function writeFile(bundle, format, file) {
 // rest of the code.  This is useful for old scripts that are not
 // available in module form.
 function jsConcatES6() {
-	return src([config.script.deps, config.script.es6])
-		.pipe(concat("script-esm.js"))
-		.pipe(dest(config.script.output));
+	return src([config.script.deps, config.script.es6]).pipe(concat('script-esm.js')).pipe(dest(config.script.output));
 }
 
 function jsConcatES5() {
-	return src([config.script.deps, config.script.es5])
-		.pipe(concat("script.js"))
-		.pipe(dest(config.script.output));
+	return src([config.script.deps, config.script.es5]).pipe(concat('script.js')).pipe(dest(config.script.output));
 }
 
 // Create minified versions of our JS for prod
 function jsMinify() {
 	return src([config.script.es5, config.script.es6])
 		.pipe(terser({ output: { comments: false } })) // Minify the JS
-		.pipe(rename({ suffix: "-min" })) // Rename it
+		.pipe(rename({ suffix: '-min' })) // Rename it
 		.pipe(dest(config.script.output)) // Write it to the output folder
 		.pipe(browsersync.stream());
 }
@@ -129,7 +122,10 @@ function watchFiles() {
 	browsersync.init({
 		proxy: config.server.proxy,
 		host: config.server.host,
-		open: "external",
+		//server: {
+		//	baseDir: './',
+		//},
+		open: 'external',
 		reloadOnRestart: true,
 	});
 
@@ -141,8 +137,8 @@ function watchFiles() {
 	// Don't force style reload because we're
 	// streaming changes to browsersync
 	watch(
-		[config.style.src, config.style.main],
-		{ events: "all", ignoreInitial: false },
+		[config.style.src, config.style.templates, config.style.main],
+		{ events: 'all', ignoreInitial: false },
 		series(sassCompile)
 	);
 
@@ -150,18 +146,11 @@ function watchFiles() {
 	// Don't force style reload because we're
 	// streaming changes to browsersync
 	watch(
-		[config.script.modules, config.script.deps, config.script.main],
+		[config.script.modules, config.script.deps, config.script.templates, config.script.main],
 		series(jsRollup, jsTranspile, jsConcatES6, jsConcatES5, jsMinify)
 	);
 }
 exports.watch = watchFiles;
 
 // Buid all the code from source
-exports.build = series(
-	jsRollup,
-	jsTranspile,
-	jsConcatES6,
-	jsConcatES5,
-	jsMinify,
-	sassCompile
-);
+exports.build = series(jsRollup, jsTranspile, jsConcatES6, jsConcatES5, jsMinify, sassCompile);

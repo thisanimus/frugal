@@ -34,7 +34,7 @@ if ( is_day() ) {
 	$context['title'] = post_type_archive_title( '', false );
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
-
+$context['term'] = new Timber\Term();
 $context['posts'] = new Timber\PostQuery();
 $context['sidebar'] = Timber::get_widgets('sidebar');
 $context['navbar'] = Timber::get_widgets('navbar');
